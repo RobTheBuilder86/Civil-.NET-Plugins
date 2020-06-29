@@ -1,0 +1,7 @@
+﻿[*.{cs,vb}]
+
+# IDE0044: Modifizierer "readonly" hinzufügen
+dotnet_style_readonly_field = false:suggestion
+
+# IDE0028: Initialisierung der Sammlung vereinfachen
+dotnet_style_collection_initializer = true:none

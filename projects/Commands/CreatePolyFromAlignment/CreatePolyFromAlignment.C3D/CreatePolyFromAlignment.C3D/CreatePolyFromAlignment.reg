@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\SOFTWARE\Autodesk\AutoCAD\R23.1\ACAD-3000:407\Applications\SurpressSurface]
+"LOADCTRLS"=dword:0000000c
+"LOADER"="D:\\proggen\\AutoCAD .NET\\v0.2_Growth\\Civil .NET Plugins\\projects\\Commands\\CreatePolyFromAlignment\\CreatePolyFromAlignment.C3D\\CreatePolyFromAlignment.C3D\\bin\\Debug\\CreatePolyFromAlignment.C3D.dll"
+"DESCRIPTION"="Extension command to press bottom surface below top surface."
+"MANAGED"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Autodesk\AutoCAD\R23.1\ACAD-3000:407\Applications\SurpressSurface\Commands]
+"CreatePolyFromAlignment"="CreatePolyFromAlignment"
