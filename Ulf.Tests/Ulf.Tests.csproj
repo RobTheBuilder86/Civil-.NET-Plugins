@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaseReaderTests.cs" />
     <Compile Include="ModelCoordTranslatorTests.cs" />
     <Compile Include="StationToXConverterTests.cs" />
     <Compile Include="UlfCalculatorTests.cs" />
@@ -80,6 +81,10 @@
       <Project>{b37f5717-beef-4b22-8f98-69d4a6102c64}</Project>
       <Name>Ulf.Engine</Name>
       <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Ulf.Excel\Ulf.Excel.csproj">
+      <Project>{b2ec27c9-3c1a-4897-877f-06f17baa3bcc}</Project>
+      <Name>Ulf.Excel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ulf.Util\Ulf.Util.csproj">
       <Project>{7e3a0068-bd3a-455e-bef4-9313e5e2d3bb}</Project>

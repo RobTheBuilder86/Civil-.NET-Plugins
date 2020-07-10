@@ -2,6 +2,6 @@
 {
     public interface ISurface
     {
-        double getMaxVVAtStation(double station);
+        double getMinVVAtStation(double station);
     }
 }

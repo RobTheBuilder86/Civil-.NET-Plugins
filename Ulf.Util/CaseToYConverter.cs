@@ -3,12 +3,12 @@
     public static class CaseToYConverter
     {
         private static readonly double YDatabandInsert = 5350000;
-        private static readonly double DeltaYCase1 = -76;
-        private static readonly double DeltaYCase2 = -86;
-        private static readonly double DeltaYCase3a = -96;
-        private static readonly double DeltaYCase3b = -106;
-        private static readonly double DeltaYCase4a = -119;
-        private static readonly double DeltaYCase4b = -129;
+        private static readonly double DeltaYCase1 = -316;
+        private static readonly double DeltaYCase2 = -326;
+        private static readonly double DeltaYCase3a = -336;
+        private static readonly double DeltaYCase4a = -346;
+        private static readonly double DeltaYCase3b = -359;
+        private static readonly double DeltaYCase4b = -369;
 
         public static double ToY(CalculationCase CalcCase)
         {

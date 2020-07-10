@@ -63,11 +63,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SurfaceSampleType.cs" />
     <Compile Include="DeconstructSurfaceSampleView.cs" />
     <Compile Include="ext\AlignmentExtension.cs" />
     <Compile Include="imp\AlignmentWrapper.cs" />
     <Compile Include="imp\PolylineWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleViewGetter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DecryptProfile.Engine\DeconstructSurfaceSampleView.Engine.csproj">

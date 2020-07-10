@@ -59,9 +59,9 @@ namespace DeconstructSurfaceSampleView.Engine.HelperObjects
 
         public override AlignmentPoint ToStationOffset(SimplePoint2d point)
         {
-            double station = ReferencePoint.Station + (point.X - ReferencePoint.X) * HorizontalExageration;
+            double station = ReferencePoint.Station + (point.X - ReferencePoint.X) / HorizontalExageration;
             double offset = ReferencePoint.Offset;
-            double elevation = ReferencePoint.Elevation + (point.Y - ReferencePoint.Y) * VerticalExageration;
+            double elevation = ReferencePoint.Elevation + (point.Y - ReferencePoint.Y) / VerticalExageration;
             return new AlignmentPoint(station, offset, elevation);
         }
     }
@@ -84,8 +84,8 @@ namespace DeconstructSurfaceSampleView.Engine.HelperObjects
         public override AlignmentPoint ToStationOffset(SimplePoint2d point)
         {
             double station = ReferencePoint.Station;
-            double offset = ReferencePoint.Offset + (point.X - ReferencePoint.X) * HorizontalExageration;
-            double elevation = ReferencePoint.Elevation + (point.Y - ReferencePoint.Y) * VerticalExageration;
+            double offset = ReferencePoint.Offset + (point.X - ReferencePoint.X) / HorizontalExageration;
+            double elevation = ReferencePoint.Elevation + (point.Y - ReferencePoint.Y) / VerticalExageration;
             return new AlignmentPoint(station, offset, elevation);
         }
     }

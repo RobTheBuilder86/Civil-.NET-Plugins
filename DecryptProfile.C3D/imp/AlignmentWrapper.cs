@@ -1,12 +1,10 @@
 ﻿using Autodesk.Civil.DatabaseServices;
 using DeconstructSurfaceSampleView.Engine.HelperObjects;
 using DeconstructSurfaceSampleView.Engine.Interfaces;
+using DeconstructSurfaceSampleView.Engine.Exceptions;
 using DeconstructSurfaceSampleView.C3D.ext;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Autodesk.Civil;
+using Common;
 
 namespace DeconstructSurfaceSampleView.C3D.imp
 {
@@ -19,11 +17,18 @@ namespace DeconstructSurfaceSampleView.C3D.imp
 
         public SimplePoint2d PointLocation(double officialStation, double offset)
         {
-            double x = 0;
-            double y = 0;
-            double rawStation = _alignment.ToRawStation(officialStation);
-            _alignment.PointLocation(rawStation, offset, ref x, ref y);
-            return new SimplePoint2d(x, y);
+            try {
+                double x = 0;
+                double y = 0;
+                double rawStation = _alignment.ToRawStation(officialStation);
+                _alignment.PointLocation(rawStation, offset, ref x, ref y);
+                return new SimplePoint2d(x, y);
+            } catch (PointNotOnEntityException) {
+                string msg = $"\nStation {officialStation:0.000} and offset {offset:0.000} " +
+                             "not defined on alignment.";
+                Active.WriteMessage(msg);
+                throw new PointNotOnAlignmentException(msg);
+            }
         }
 
         public double StartStation {

@@ -36,9 +36,6 @@ namespace Ulf.Engine
 
         public static double ToUlF(double VV, CalculationCase calcCase)
         {
-            if (VV < 0) {
-                throw new ArgumentException("Vibration velocity cannot have negative value.");
-            }
             switch (calcCase) {
                 case CalculationCase.Case1:
                 case CalculationCase.Case2:
@@ -81,7 +78,11 @@ namespace Ulf.Engine
             {
                 double deltaVV = vv - Point1.VV;
                 double deltaUlf = deltaVV * UnitUlfPerUnitVV;
-                return Point1.ULF + deltaUlf;
+                double ulf = Point1.ULF + deltaUlf;
+                if(ulf < 0) {
+                    return 0;
+                }
+                return ulf;
             }
         }
     }

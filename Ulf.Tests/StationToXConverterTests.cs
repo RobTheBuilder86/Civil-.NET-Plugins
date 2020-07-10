@@ -18,6 +18,28 @@ namespace Ulf.Tests
             this.output = output;
         }
 
+        [Fact]
+        public void ToX_Station70790_Returns3584030()
+        {
+            double expected = 3584030;
+            double station = 70790;
+
+            double actual = StationToXConverter.ToX(station);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ToX_Station58760_Returns3560020()
+        {
+            double expected = 3560020;
+            double station = 58760;
+
+            double actual = StationToXConverter.ToX(station);
+
+            Assert.Equal(expected, actual);
+        }
+
         [Theory]
         [InlineData(53529, "Station before 1st databand.")]
         [InlineData(75826, "Station after last databand.")]
@@ -111,5 +133,19 @@ namespace Ulf.Tests
             }
         };
 
+        [Fact]
+        public void FindModelXOfJumps_58700To58750_Returns3559070And3560000()
+        {
+            double fromStation = 58700;
+            double toStation = 58750;
+            var expectedJumps = new List<(double, double)>() {
+                (3559070, 3560000)
+            };
+
+            List<(double, double)> actualJumps = 
+                StationToXConverter.FindModelXsOfJumps(fromStation, toStation);
+
+            Assert.Equal(expectedJumps, actualJumps);
+        }
     }
 }

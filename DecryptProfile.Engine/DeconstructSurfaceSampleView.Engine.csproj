@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\Exceptions.cs" />
     <Compile Include="SampleViewDeconstructor.cs" />
     <Compile Include="HelperObjects\ReferencePointData.cs" />
     <Compile Include="HelperObjects\SimplePoint2d.cs" />

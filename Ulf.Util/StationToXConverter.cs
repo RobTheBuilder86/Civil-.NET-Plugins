@@ -18,6 +18,12 @@ namespace Ulf.Util
             1120,     605.2665
         };
 
+        static List<double> DatabandLengthsWithoutSteq = new List<double> {
+            1000, 1120,  910, 1110, 1070, 1080,  910,  890, 1050,  880,
+            1020, 990,  1030,  860, 1080, 1120, 1110, 1120, 1120, 1100,
+            1120,     605.2665
+        };
+
         static List<StationEquation> StationEquations = new List<StationEquation>{
             new StationEquation(53834.377, 53810.503),
             new StationEquation(64340.460, 64326.078)
@@ -55,7 +61,7 @@ namespace Ulf.Util
             int jumps = 0;
             double iterationStation = StartStation;
             while (iterationStation < station) {
-                iterationStation += DatabandLengths[jumps];
+                iterationStation += DatabandLengthsWithoutSteq[jumps];
                 jumps++;
             }
             return --jumps;
@@ -79,13 +85,13 @@ namespace Ulf.Util
             var jumps = new List<double>();
             int index = 0;
             double station = StartStation;
-            while (station + DatabandLengths[index] < fromStation) {
-                station += DatabandLengths[index];
+            while (station + DatabandLengthsWithoutSteq[index] < fromStation) {
+                station += DatabandLengthsWithoutSteq[index];
                 index++;
             }
-            while (station + DatabandLengths[index] < toStation) {
-                station += DatabandLengths[index];
-                jumps.Add(station - CalculateStationEquationCorrection(station));
+            while (station + DatabandLengthsWithoutSteq[index] < toStation) {
+                station += DatabandLengthsWithoutSteq[index];
+                jumps.Add(station);
                 index++;
             }
             return jumps;

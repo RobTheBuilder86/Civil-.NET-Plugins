@@ -48,6 +48,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulf.Tests", "Ulf.Tests\Ulf.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulf.C3D", "Ulf.C3d\Ulf.C3D.csproj", "{333BB81D-E458-4E68-983F-5631AEC1D212}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlignmentStationCheck", "AlignmentStationCheck\AlignmentStationCheck.csproj", "{E5042710-C523-4189-8E74-0510ED3F6327}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +116,10 @@ Global
 		{333BB81D-E458-4E68-983F-5631AEC1D212}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{333BB81D-E458-4E68-983F-5631AEC1D212}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{333BB81D-E458-4E68-983F-5631AEC1D212}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5042710-C523-4189-8E74-0510ED3F6327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5042710-C523-4189-8E74-0510ED3F6327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5042710-C523-4189-8E74-0510ED3F6327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5042710-C523-4189-8E74-0510ED3F6327}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -137,6 +143,7 @@ Global
 		{7E3A0068-BD3A-455E-BEF4-9313E5E2D3BB} = {937DEC8D-6407-49CE-9B94-94E70FBE82B5}
 		{3CF94484-EE37-4650-8651-BC291FB3837D} = {937DEC8D-6407-49CE-9B94-94E70FBE82B5}
 		{333BB81D-E458-4E68-983F-5631AEC1D212} = {937DEC8D-6407-49CE-9B94-94E70FBE82B5}
+		{E5042710-C523-4189-8E74-0510ED3F6327} = {29CD4E2E-81D3-46B0-85C9-7CF9F5C70A33}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {004C1BA7-402A-446A-931F-4BF84C10869A}

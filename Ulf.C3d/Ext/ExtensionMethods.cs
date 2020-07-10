@@ -11,9 +11,9 @@ namespace Ulf.C3D.Ext
 {
     internal static class ExtensionMethods
     {
-        internal static Point2d ToPoint2d(this SimplePoint2d point)
+        internal static Point3d ToPoint3d(this SimplePoint2d point)
         {
-            return new Point2d(point.X, point.Y);
+            return new Point3d(point.X, point.Y, 0);
         }
 
         internal static Point3d ToPoint3d(this CaseStation cs)

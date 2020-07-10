@@ -7,7 +7,7 @@ using Ulf.Util;
 
 namespace Ulf.Engine
 {
-    class UlfHandler
+    public class UlfHandler
     {
         private List<CaseAssignment> _assignments;
         private ISurface _surface;
@@ -40,7 +40,8 @@ namespace Ulf.Engine
         {
             StartCaseLine(0);
             EndLineOrAddTransitionAccordingToNextAssignment(0);
-            for (int i = 1; i < _assignments.Count; i++) {
+            DrawUlfForAssignment(0);
+            for (int i = 1; i < _assignments.Count-1; i++) {
                 // If current assignment has none case, skip current itteration.
                 if(IsNoneCase(i)) {
                     continue;
@@ -50,6 +51,8 @@ namespace Ulf.Engine
                     DrawUlfForAssignment(i);
                 }
             }
+            EndCaseLine(_assignments.Count - 1);
+            DrawUlfForAssignment(_assignments.Count - 1);
         }
 
         private bool IsNoneCase(int assignmentIndex)
@@ -99,17 +102,22 @@ namespace Ulf.Engine
 
         private void DrawUlfForAssignment(int assignmentIndex)
         {
-            double startStation = _assignments[assignmentIndex].FromStation + 1;
-            double endStation = _assignments[assignmentIndex].FromStation;
+
+            double startStation = _assignments[assignmentIndex].FromStation;
+            double endStation = _assignments[assignmentIndex].ToStation;
             double deltaStation = endStation - startStation;
             double increaseFactor = deltaStation / Math.Ceiling(deltaStation);
             CalculationCase calcCase = _assignments[assignmentIndex].CalcCase;
             for (double station = startStation; 
                         station <= endStation; 
                         station += increaseFactor) {
-                double maxVV = _surface.getMaxVVAtStation(station);
-                double ulf = UlfCalculator.ToUlF(maxVV, calcCase);
-                _ulfEntHandler.AddUlfEntity(station, ulf);
+                try {
+                    double maxVV = _surface.getMinVVAtStation(station);
+                    double ulf = UlfCalculator.ToUlF(maxVV, calcCase);
+                    _ulfEntHandler.AddUlfEntity(station, ulf);
+                } catch (SurfaceNotDefinedException) {
+
+                }
             } 
         }
     }

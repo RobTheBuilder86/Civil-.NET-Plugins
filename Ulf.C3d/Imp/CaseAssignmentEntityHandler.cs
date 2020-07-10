@@ -9,18 +9,23 @@ using Autodesk.AutoCAD.GraphicsSystem;
 using Autodesk.Civil.DatabaseServices;
 using System;
 using Ulf.C3D.Helper;
+using System.Collections.Generic;
 
 namespace Ulf.C3D.Imp
 {
     internal class CaseAssignmentEntityHandler : ICaseAssignmentEntityHandler
     {
-
-        private double steepness = 2;
         private CaseStation csLast;
+        private EntityCreator _creator;
+
+        public CaseAssignmentEntityHandler(EntityCreator creator)
+        {
+            _creator = creator;
+        }
 
         public void Reset()
         {
-            Active.DeleteAllEntitiesOnLayer("IAG_BWB_Fallzuordnung");
+            _creator.Reset();
         }
 
         public void StartCaseLine(CaseStation cs)
@@ -37,6 +42,7 @@ namespace Ulf.C3D.Imp
             double startPointStation = csTo.Station - deltaStation / 2;
             CaseStation TransitionStartPoint = new CaseStation(startPointCase, startPointStation);
             AddBlockInsert(TransitionStartPoint);
+            DrawLine(csLast, TransitionStartPoint);
 
             CalculationCase endPointCase = csTo.CalcCase;
             double endPointStation = csTo.Station + deltaStation / 2;
@@ -44,7 +50,7 @@ namespace Ulf.C3D.Imp
             AddBlockInsert(TransitionEndPoint);
             DrawLine(TransitionStartPoint, TransitionEndPoint);
 
-            csLast = csTo;
+            csLast = TransitionEndPoint;
         }
 
         public void EndCaseLine(CaseStation csTo)
@@ -56,12 +62,13 @@ namespace Ulf.C3D.Imp
 
         private void AddBlockInsert(CaseStation cs)
         {
-
+            _creator.CreateBlockInsert(cs);
         }
 
         private void DrawLine(CaseStation csFrom, CaseStation csTo)
         {
-
+            List<(SimplePoint2d, SimplePoint2d)> endPoints = LineModelCoordTranslator.TranslateLine(csFrom, csTo);
+            _creator.CreateLines(endPoints);
         }
     }
 }
